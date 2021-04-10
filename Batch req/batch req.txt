@@ -1,0 +1,65 @@
+--batch_45473b4e-5ce5-409d-dd5a-3d60082df906
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+GET https://29mds.sharepoint.com/sites/test/_api/web/lists/getbytitle('test')/items HTTP/1.1
+Host: 29mds.sharepoint.com
+Accept: application/json;odata=verbose
+
+
+
+--batch_45473b4e-5ce5-409d-dd5a-3d60082df906
+Content-Type: multipart/mixed; boundary="changeset_f9c96a07-641a-4897-90ed-d285d2dbfc2e"
+Host: https://sites.ey.com/sites/GEET_TTGS
+Content-Transfer-Encoding: binary
+
+--changeset_f9c96a07-641a-4897-90ed-d285d2dbfc2e
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST https://sites.ey.com/sites/GEET_TTGS/_api/web/lists/getbytitle('TestMontlyTracker')/items HTTP/1.1
+Content-Type: application/json;odata=verbose
+
+{"__metadata":{"type":"SP.Data.TestMontlyTrackerListItem"},"Title":"test"}
+
+--changeset_f9c96a07-641a-4897-90ed-d285d2dbfc2e
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST https://sites.ey.com/sites/GEET_TTGS/_api/web/lists/getbytitle('TestMontlyTracker')/items HTTP/1.1
+Content-Type: application/json;odata=verbose
+
+{"__metadata":{"type":"SP.Data.TestMontlyTrackerListItem"},"Title":"test1"}
+
+--changeset_f9c96a07-641a-4897-90ed-d285d2dbfc2e--
+--batch_45473b4e-5ce5-409d-dd5a-3d60082df906--
+
+
+
+https://29mds.sharepoint.com/sites/test/_api/web/lists/getbytitle('check')/items$select=EntityTypeFullName
+
+
+SP.Data.TestMontlyTrackerListItem
+
+https://sites.ey.com/sites/GEET_TTGS/Lists/TestMontlyTracker/AllItems.aspx
+
+Content-Type
+multipart/mixed; boundary=batch_45473b4e-5ce5-409d-dd5a-3d60082df906
+
+
+
+PATCH https://29mds.sharepoint.com/sites/test/_api/web/lists/GetByTitle('test')/items(1) HTTP/1.1
+Content-Type: application/json;odata=nometadata
+If-Match: *
+
+{
+"Title":"Patch"
+}
+
+
+Date format: addSeconds('1899-12-30', int(formatNumber(mul(float(items('Apply_to_each')?['Updated']), 86400), '0', 'en-us')), 'yyyy-MM-dd HH:mm:ss')
+
+https://sites.ey.com/sites/GEET_TTGS/_api/web/lists/getbytitle('TestMontlyTracker')/items?$select=Title,ID&$filter=(Title eq 'CASE35307759') and (status ne 'Closed Complete' and status ne 'Resolved Complete')&$top=5000
+addDays('1899-12-30',int(items('Apply_to_each')?['Created on']))
+
+addDays('1899-12-30',int(items('Apply_to_each')?['Updated']))
